@@ -58,13 +58,16 @@ function App() {
       setGuessLetters([...guessedLetters, letter])
       setWrongLetter(wrongLetter + 1)
       document.querySelector("#input").value = ''
+      if ( wrongLetter === 6){
+        alert("GAME OVER")
+      }
       // console.log(wrongLetter)
     }
   }
 
-  function status() {
-    wrongLetter === 6 ? "GAME OVER" : 6 - {wrongLetter}
-  }
+  // function status() {
+  //   wrongLetter === 6 ? "GAME OVER" : 6 - {wrongLetter}
+  // }
 
   let wordToGuess = puzzle.split("").map((letter) => guessedLetters.includes(letter) ? letter : "_").join(" ")
   // letter = '_')
@@ -80,7 +83,7 @@ console.log(wrongLetter)
       <button type="submit" onClick={() => handleGuess(letter)}>guess letter</button>
       <div>Past letters: <p>{guessedLetters}</p>
       </div>
-      <div>Tries left: {status}</div>
+      <div>Tries left: {6 - wrongLetter}</div>
     </div>
     </>
   )
